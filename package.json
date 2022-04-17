@@ -2,7 +2,7 @@
 	"name": "vipaks",
 	"version": "1.0.0",
 	"description": "",
-	"main": "index.tsx",
+	"main": "index.js",
 	"scripts": {
 		"webpack": "webpack",
 		"start": "webpack serve"

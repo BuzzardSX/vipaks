@@ -1,5 +1,5 @@
+import React from 'react';
 import { render } from 'react-dom';
-import './globals.ts';
-import App from './App';
+import App from './App.js';
 
 render(<App />, window.Root);
