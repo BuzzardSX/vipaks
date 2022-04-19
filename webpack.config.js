@@ -9,10 +9,9 @@ module.exports = {
 	},
 	mode: process.env.NODE_ENV || 'development',
 	resolve: {
-		extensions: [ '.tsx', '.ts', '.js' ]
+		extensions: [ '.js' ]
 	},
 	devServer: {
-		// contentBase: path.join(__dirname, 'src'),
 		historyApiFallback: true
 	},
 	module: {
@@ -21,11 +20,6 @@ module.exports = {
 				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
 				use: [ 'babel-loader' ]
-			},
-			{
-				test: /\.(ts|tsx)$/,
-				exclude: /node_modules/,
-				use: [ 'ts-loader' ]
 			}
 		]
 	},

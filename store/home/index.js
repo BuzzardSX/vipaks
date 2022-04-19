@@ -1,22 +1,20 @@
+import { SET_USER } from './actionTypes';
+
 const initialState = {
-	user: {
-		avatar: null
-	}
+	avatarUrl: null,
+	profileUrl: null
 };
 
 function setUser(state, payload) {
 	return {
 		...state,
-		user: {
-			...state.user,
-			avatar: payload.avatar
-		}
+		...payload
 	};
 }
 
 function reducer(state = initialState, action) {
 	switch (action.type) {
-		case 'set_user':
+		case SET_USER:
 			return setUser(state, action.payload);
 		default:
 			return state;
