@@ -1,22 +1,21 @@
-import React from 'react';
+import { default as React, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Avatar, Button } from '@mui/material';
-import { load } from '../store/home/thunks';
+import { load, loadRepositories } from '../store/home/thunks';
 
 const userLogin = 'defunkt';
 
 function Home() {
 	const dispatch = useDispatch();
 
-	dispatch(load(userLogin));
+	useEffect(() => {
+		dispatch(load(userLogin));
+		dispatch(loadRepositories(userLogin));
+	}, []);
 
 	const state = useSelector(state => state.home);
 
 	return <>
-		<Avatar src={state.avatarUrl} />
-		<Button>Click me!</Button>
-		<div>Some</div>
-		<div>{state.avatarUrl}</div>
+		<button>but</button>
 	</>;
 }
 

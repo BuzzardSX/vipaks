@@ -1,21 +1,31 @@
-import { SET_USER } from './actionTypes';
+import { SET, SET_REPOSITORIES } from './actionTypes';
 
 const initialState = {
 	avatarUrl: null,
-	profileUrl: null
+	login: null,
+	profileUrl: null,
+	repositories: []
 };
 
-function setUser(state, payload) {
+function set(state, payload) {
 	return {
 		...state,
 		...payload
 	};
 }
 
-function reducer(state = initialState, action) {
-	switch (action.type) {
-		case SET_USER:
-			return setUser(state, action.payload);
+function setRepositories(state, payload) {
+	return {
+		...state
+	};
+}
+
+function reducer(state = initialState, { type, payload }) {
+	switch (type) {
+		case SET:
+			return set(state, payload);
+		case SET_REPOSITORIES:
+			return setRepositories(state, payload)
 		default:
 			return state;
 	}

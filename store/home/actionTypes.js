@@ -1,1 +1,2 @@
-export const SET_USER = 'home/set_user';
+export const SET = 'home/set';
+export const SET_REPOSITORIES = 'home/repositories';
