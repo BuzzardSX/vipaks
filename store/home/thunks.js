@@ -7,18 +7,22 @@ export const load = (login) => async (dispatch) => {
 	dispatch(set({
 		avatarUrl: json.avatar_url,
 		login: json.login,
-		profileUrl: json.html_url
+		profileUrl: json.html_url,
+		creationDate: new Date(json.created_at)
 	}));
 }
 
 export const loadRepositories = (login) => async (dispatch) => {
 	const resp = await fetch(`https://api.github.com/users/${login}/repos`);
 	const json = await resp.json();
-	console.log(json);
 
-	// dispatch(set({
-	// 	avatarUrl: json.avatar_url,
-	// 	login: json.login,
-	// 	profileUrl: json.html_url
-	// }));
+	const payload = json.map(i => ({
+		name: i.name,
+		description: i.description,
+		language: i.language,
+		createdAt: i.created_at,
+		cloneUrl: i.clone_url
+	}));
+
+	dispatch(setRepositories(payload));
 }

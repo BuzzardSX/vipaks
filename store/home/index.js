@@ -4,6 +4,7 @@ const initialState = {
 	avatarUrl: null,
 	login: null,
 	profileUrl: null,
+	creationDate: null,
 	repositories: []
 };
 
@@ -16,7 +17,8 @@ function set(state, payload) {
 
 function setRepositories(state, payload) {
 	return {
-		...state
+		...state,
+		repositories: payload
 	};
 }
 
