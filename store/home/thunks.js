@@ -1,4 +1,4 @@
-import { set, setRepositories } from './actions';
+import { set, setRepositories, setSubscriptions } from './actions';
 
 export const load = (login) => async (dispatch) => {
 	const resp = await fetch(`https://api.github.com/users/${login}`);
@@ -20,9 +20,22 @@ export const loadRepositories = (login) => async (dispatch) => {
 		name: i.name,
 		description: i.description,
 		language: i.language,
-		createdAt: i.created_at,
+		createdAt: new Date(i.created_at),
 		cloneUrl: i.clone_url
 	}));
 
 	dispatch(setRepositories(payload));
+}
+
+export const loadSubscriptions = (login) => async (dispatch) => {
+	const resp = await fetch(`https://api.github.com/users/${login}/following`);
+	const json = await resp.json();
+
+	const payload = json.map(i => ({
+		login: i.login,
+		profileUrl: i.html_url,
+		avatarUrl: i.avatar_url
+	}));
+
+	dispatch(setSubscriptions(payload));
 }

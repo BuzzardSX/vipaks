@@ -1,11 +1,12 @@
-import { SET, SET_REPOSITORIES } from './actionTypes';
+import { SET, SET_REPOSITORIES, SET_SUBSCRIPTIONS } from './actionTypes';
 
 const initialState = {
 	avatarUrl: null,
 	login: null,
 	profileUrl: null,
 	creationDate: null,
-	repositories: []
+	repositories: [],
+	subscriptions: []
 };
 
 function set(state, payload) {
@@ -22,12 +23,21 @@ function setRepositories(state, payload) {
 	};
 }
 
+function setSubscriptions(state, payload) {
+	return {
+		...state,
+		subscriptions: payload
+	};
+}
+
 function reducer(state = initialState, { type, payload }) {
 	switch (type) {
 		case SET:
 			return set(state, payload);
 		case SET_REPOSITORIES:
-			return setRepositories(state, payload)
+			return setRepositories(state, payload);
+		case SET_SUBSCRIPTIONS:
+			return setSubscriptions(state, payload);
 		default:
 			return state;
 	}

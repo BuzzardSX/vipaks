@@ -1,8 +1,7 @@
 import { BrowserRouter, Link as RouterLink, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { AppBar, CssBaseline, Link, Toolbar } from '@mui/material';
-import { Home } from './pages';
-import Team from './Team';
+import { AppBar, Container, CssBaseline, Link, Toolbar } from '@mui/material';
+import { Home, Team } from './pages';
 import store from '../store';
 
 function App() {
@@ -16,10 +15,12 @@ function App() {
 						<Link component={RouterLink} to="/team">Team</Link>
 					</Toolbar>
 				</AppBar>
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/team" element={<Team />} />
-				</Routes>
+				<Container>
+					<Routes>
+						<Route path="/" element={<Home />} />
+						<Route path="/team" element={<Team />} />
+					</Routes>
+				</Container>
 			</BrowserRouter>
 		</Provider>
 	);
